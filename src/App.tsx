@@ -12,6 +12,8 @@ import Admissions from "./pages/Admissions";
 import Facilities from "./pages/Facilities";
 import Academics from "./pages/Academics";
 import Announcements from "./pages/Announcements";
+import TamilMedium from "./pages/TamilMedium";
+import EnglishMedium from "./pages/EnglishMedium";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +33,8 @@ const App = () => (
           <Route path="/facilities" element={<Facilities />} />
           <Route path="/academics" element={<Academics />} />
           <Route path="/announcements" element={<Announcements />} />
+          <Route path="/tamil-medium" element={<TamilMedium />} />
+          <Route path="/english-medium" element={<EnglishMedium />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

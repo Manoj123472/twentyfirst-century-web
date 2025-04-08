@@ -6,8 +6,28 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { CheckCircle, FileText, Calendar, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Admissions = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.2
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -15,68 +35,107 @@ const Admissions = () => {
       <main className="flex-grow">
         <div className="bg-school-red py-12 md:py-24 text-white">
           <div className="school-container">
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 animate-fade-in">Admissions</h1>
-            <p className="text-lg max-w-3xl animate-slide-in">
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl md:text-5xl font-bold mb-4"
+            >
+              Admissions
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-lg max-w-3xl"
+            >
               Join 21st Century International Matriculation School and embark on a journey of academic excellence and holistic development.
-            </p>
+            </motion.p>
           </div>
         </div>
         
         <section className="py-12 bg-white">
           <div className="school-container">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-school-red text-center">Admission Process</h2>
+            <motion.h2 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-2xl md:text-3xl font-bold mb-8 text-school-red text-center"
+            >
+              Admission Process
+            </motion.h2>
             
-            <div className="grid md:grid-cols-4 gap-6 mb-12">
-              <Card className="border-school-lightred hover:shadow-md transition-shadow animate-fade-in" style={{animationDelay: "0.1s"}}>
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex justify-center">
-                    <FileText className="h-12 w-12 text-school-red" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-center mb-2">Application</h3>
-                  <p className="text-school-gray text-center">
-                    Complete the online application form or visit our administrative office.
-                  </p>
-                </CardContent>
-              </Card>
+            <motion.div 
+              className="grid md:grid-cols-4 gap-6 mb-12"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.div variants={itemVariants}>
+                <Card className="border-school-lightred hover:shadow-md transition-shadow h-full">
+                  <CardContent className="pt-6">
+                    <div className="mb-4 flex justify-center">
+                      <FileText className="h-12 w-12 text-school-red" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-center mb-2">Application</h3>
+                    <p className="text-school-gray text-center">
+                      Complete the online application form or visit our administrative office.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
               
-              <Card className="border-school-lightred hover:shadow-md transition-shadow animate-fade-in" style={{animationDelay: "0.2s"}}>
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex justify-center">
-                    <Clock className="h-12 w-12 text-school-red" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-center mb-2">Entrance Test</h3>
-                  <p className="text-school-gray text-center">
-                    Schedule and complete the entrance assessment appropriate for your grade level.
-                  </p>
-                </CardContent>
-              </Card>
+              <motion.div variants={itemVariants}>
+                <Card className="border-school-lightred hover:shadow-md transition-shadow h-full">
+                  <CardContent className="pt-6">
+                    <div className="mb-4 flex justify-center">
+                      <Clock className="h-12 w-12 text-school-red" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-center mb-2">Entrance Test</h3>
+                    <p className="text-school-gray text-center">
+                      Schedule and complete the entrance assessment appropriate for your grade level.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
               
-              <Card className="border-school-lightred hover:shadow-md transition-shadow animate-fade-in" style={{animationDelay: "0.3s"}}>
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex justify-center">
-                    <Calendar className="h-12 w-12 text-school-red" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-center mb-2">Interview</h3>
-                  <p className="text-school-gray text-center">
-                    Attend a personal interview with our academic coordinators and principal.
-                  </p>
-                </CardContent>
-              </Card>
+              <motion.div variants={itemVariants}>
+                <Card className="border-school-lightred hover:shadow-md transition-shadow h-full">
+                  <CardContent className="pt-6">
+                    <div className="mb-4 flex justify-center">
+                      <Calendar className="h-12 w-12 text-school-red" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-center mb-2">Interview</h3>
+                    <p className="text-school-gray text-center">
+                      Attend a personal interview with our academic coordinators and principal.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
               
-              <Card className="border-school-lightred hover:shadow-md transition-shadow animate-fade-in" style={{animationDelay: "0.4s"}}>
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex justify-center">
-                    <CheckCircle className="h-12 w-12 text-school-red" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-center mb-2">Confirmation</h3>
-                  <p className="text-school-gray text-center">
-                    Receive acceptance notification and complete the admission formalities.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+              <motion.div variants={itemVariants}>
+                <Card className="border-school-lightred hover:shadow-md transition-shadow h-full">
+                  <CardContent className="pt-6">
+                    <div className="mb-4 flex justify-center">
+                      <CheckCircle className="h-12 w-12 text-school-red" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-center mb-2">Confirmation</h3>
+                    <p className="text-school-gray text-center">
+                      Receive acceptance notification and complete the admission formalities.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
             
-            <div className="bg-school-lightgray p-6 md:p-8 rounded-lg max-w-4xl mx-auto animate-fade-in">
+            <motion.div 
+              className="bg-school-lightgray p-6 md:p-8 rounded-lg max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <h3 className="text-xl font-bold mb-4 text-school-red">Required Documents</h3>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
@@ -104,18 +163,37 @@ const Admissions = () => {
               <p className="text-school-gray italic">
                 Note: Additional documents may be required based on specific circumstances.
               </p>
-            </div>
+            </motion.div>
           </div>
         </section>
         
         <section className="py-12 bg-gradient-to-r from-school-red to-school-darkred text-white">
           <div className="school-container text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 animate-fade-in">Ready to Apply?</h2>
-            <p className="max-w-2xl mx-auto mb-8 animate-fade-in" style={{animationDelay: "0.2s"}}>
+            <motion.h2 
+              className="text-2xl md:text-3xl font-bold mb-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              Ready to Apply?
+            </motion.h2>
+            <motion.p 
+              className="max-w-2xl mx-auto mb-8"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
               Applications for the 2025-26 academic year are now open. 
               Secure your child's future with quality education at 21st Century International Matriculation School.
-            </p>
-            <div className="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4 animate-fade-in" style={{animationDelay: "0.3s"}}>
+            </motion.p>
+            <motion.div 
+              className="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <Button size="lg" className="bg-white text-school-red hover:bg-school-lightgray">
                 <a href="#" className="flex items-center">
                   <FileText className="mr-2 h-5 w-5" />
@@ -127,80 +205,7 @@ const Admissions = () => {
                   Contact Admissions Office
                 </Link>
               </Button>
-            </div>
-          </div>
-        </section>
-        
-        <section className="py-12 bg-white">
-          <div className="school-container">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-school-red text-center animate-fade-in">Fee Structure</h2>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in" style={{animationDelay: "0.2s"}}>
-              <Card className="border-school-lightred hover:shadow-md transition-shadow">
-                <CardContent className="pt-6">
-                  <h3 className="text-xl font-semibold mb-4 text-center text-school-red">Pre-Primary</h3>
-                  <ul className="space-y-2">
-                    <li className="flex justify-between">
-                      <span>Admission Fee</span>
-                      <span className="font-medium">₹5,000</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Tuition Fee (Per Term)</span>
-                      <span className="font-medium">₹12,000</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Development Fee</span>
-                      <span className="font-medium">₹3,000</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="border-school-lightred hover:shadow-md transition-shadow">
-                <CardContent className="pt-6">
-                  <h3 className="text-xl font-semibold mb-4 text-center text-school-red">Primary (1-5)</h3>
-                  <ul className="space-y-2">
-                    <li className="flex justify-between">
-                      <span>Admission Fee</span>
-                      <span className="font-medium">₹8,000</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Tuition Fee (Per Term)</span>
-                      <span className="font-medium">₹15,000</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Development Fee</span>
-                      <span className="font-medium">₹4,000</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card className="border-school-lightred hover:shadow-md transition-shadow">
-                <CardContent className="pt-6">
-                  <h3 className="text-xl font-semibold mb-4 text-center text-school-red">Secondary (6-12)</h3>
-                  <ul className="space-y-2">
-                    <li className="flex justify-between">
-                      <span>Admission Fee</span>
-                      <span className="font-medium">₹10,000</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Tuition Fee (Per Term)</span>
-                      <span className="font-medium">₹18,000</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Development Fee</span>
-                      <span className="font-medium">₹5,000</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-            
-            <p className="text-center text-school-gray mt-8 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: "0.3s"}}>
-              * Additional fees may apply for extracurricular activities, transportation, and uniforms. 
-              Scholarships are available for meritorious students. Please contact the admissions office for detailed information.
-            </p>
+            </motion.div>
           </div>
         </section>
       </main>
