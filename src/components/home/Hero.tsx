@@ -14,7 +14,7 @@ const Hero = () => {
       <div className="relative z-20 school-container py-16 md:py-24 text-white">
         <div className="max-w-2xl">
           <h1 className="text-3xl md:text-5xl font-bold mb-4 animate-fade-in">
-            Educating Tomorrow's Leaders 78987
+            Educating Tomorrow's Leaders Today 239483
           </h1>
           <p className="text-lg md:text-xl mb-8 opacity-90 animate-slide-in">
             Welcome to 21st Century International Matriculation School in Sivagangai, 
